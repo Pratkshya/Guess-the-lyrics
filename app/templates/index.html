@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Complete the Lyrics to identify yourself as a CAS listener!</h1>
+    <form action="{{ url_for('check_lyrics') }}" method="POST">
+        <p>Enter the missing lyrics:</p>
+        <label for="lyrics">It's so sweet</label>
+        <input type="text" id="lyrics" name="lyrics" required>
+        <input type="submit" value="Submit">
+    </form>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+{% endblock %}
